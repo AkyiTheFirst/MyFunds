@@ -10,18 +10,17 @@
         <h2 class="text-center mx-auto font-bold text-3xl text-primary"><?= $total?>&nbsp; <span class = "text-2xl">MMK</span></h2>
     </div>
 
-    <div class="h-auto min-h-64 overflow-x-auto m-8 table-sm flex">
+    <div class="h-auto min-h-24 overflow-x-auto m-8 table-sm flex">
         <table class = "table table-pin-rows mx-auto text-center">
             <thead>
-                <?php 
-                $thisTime = getdate(strtotime(date("Y-m-d")));?>
+                <?php $thisTime = getdate(strtotime(date("Y-m-d"))) ?>
                 <tr>
                     <td>Date</td>
                 </tr>
             </thead>
             <tbody>
             <?php foreach($dateStreams as $dateStream) : ?>
-                <tr class = "flex-grow">
+                <tr class = "h-16">
                     <?php 
                     //getting date of each stream as associative array
                     $dataTime = getdate(strtotime($dateStream['date']));

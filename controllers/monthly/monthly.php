@@ -1,30 +1,25 @@
 <?php
 
+use core\Database;
+
 //connecting to database
-$dsn = "mysql:host=localhost;port=3306;dbname=myfunds;user=root;charset=utf8mb4";
-$pdo = new PDO($dsn);
+$config = require('config.php');
+$db = new Database($config['database']);
 
 //variables
 $date = date("Y-m-d");
 $total = 0;
+$userid = 0;
+if(isset($_COOKIE['userid'])){
+    $userid = $_COOKIE['userid'];
+}
 
-//writing db query
-$statement = $pdo->prepare("SELECT * FROM balance");
+//writing db query for calculating total
+$streams = $db->query("SELECT * FROM balance WHERE userid = '$userid'")->getAll();
 
-//executing query
-$statement->execute();
-
-//getting data from db
-$streams = $statement->fetchAll(PDO::FETCH_ASSOC);
 $total = getTotal($streams);
 
-//writing db query
-$statement = $pdo->prepare("SELECT DISTINCT `date` FROM balance");
-
-//executing query
-$statement->execute();
-
-//getting data from db
-$dateStreams = $statement->fetchAll(PDO::FETCH_ASSOC);
+//writing db query for displaying different dates
+$dateStreams = $db->query("SELECT DISTINCT `date` FROM balance WHERE userid = '$userid'")->getAll();
 
 require('view/monthly/monthly.view.php');

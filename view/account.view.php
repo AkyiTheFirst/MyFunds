@@ -11,13 +11,16 @@
             class="rounded-full bg-accent w-32 h-32" />
         </figure>
         <div class="card-body items-center text-center">
-            <h2 class="card-title">Your Name</h2>
-            <p>Total Money : </p>
+            <h2 class="card-title"><?= $user['username']?></h2>
+            <p>Total Money : <?= $total ?> MMK</p>
             <p></p>
             <div class="card-actions">
-            <a href = "/" class="btn btn-primary btn-sm">Back to Home</a>
+            <a href = "/" class="btn btn-primary">Back to Home</a>
             </div>
         </div>
+        <form action="/logout" method = "POST" class="mx-auto mb-8">
+            <button type = "submit" class="link link-primary">Log Out</button>
+        </form>
     </div>
 </main>
 

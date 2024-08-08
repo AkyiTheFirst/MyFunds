@@ -4,7 +4,7 @@
 
 <!-- main -->
 <main class = "flex-grow">
-    <?php $date = $streams[0]['date']?>
+    <?php $date = $financeDate?>
     <div class="flex flex-col my-8">
         <h2 class="text-center mx-auto font-semibold text-xl">Your Total for
             <?php if($date === date("Y-m-d")) : ?> 
