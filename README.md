@@ -2,7 +2,7 @@ Info for creating database
 
 Database Name = "myfunds"
 
-Create a table using this code ==>
+Create balance table using this code ==>
 
 <code>
 create TABLE balance (
@@ -12,5 +12,16 @@ create TABLE balance (
   amount INT NOT NULL,
   account VARCHAR(10) NOT NULL,
   `date` DATE
+);
+</code>
+
+Create user table using this code ==>
+
+<code>
+CREATE TABLE user (
+	userid INT NOT NULL UNIQUE PRIMARY KEY AUTO_INCREMENT,
+	email VARCHAR(50),
+	username VARCHAR(50),
+	PASSWORD VARCHAR(50)
 );
 </code>
