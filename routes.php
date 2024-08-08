@@ -9,4 +9,6 @@ return [
     "/update" => "controllers/finance/update.php",
     "/delete" => "controllers/finance/delete.php",
     "/account" => "controllers/account.php",
+    "/login" => "controllers/login.php",
+    "/logout" => "controllers/logout.php",
 ];

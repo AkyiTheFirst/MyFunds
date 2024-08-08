@@ -1,18 +1,17 @@
 <?php
+use core\Database;
 
 //connecting to database
-$dsn = "mysql:host=localhost;port=3306;dbname=myfunds;user=root;charset=utf8mb4";
-$pdo = new PDO($dsn);
+$config = require('config.php');
+$db = new Database($config['database']);
+
+//variables
 $id = $_POST['id'];
 
 //writing db query
-$statement = $pdo->prepare("DELETE FROM balance WHERE id = '$id'");
-//  WHERE date = '$date'
+//$statement = $pdo->prepare("DELETE FROM balance WHERE id = '$id'");
 
-//if(deleteConfirmation() = true){
-    //executing query
-    $statement->execute();                    
-//}
+$db->query("DELETE FROM balance WHERE id = '$id'");
 
 header('location: /finance');
 die();

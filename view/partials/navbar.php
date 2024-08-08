@@ -6,8 +6,9 @@
         </div>
         <div class="flex-6 flex">
             <ul class="menu menu-horizontal px-1 flex-2 flex items-center">
+            <?php if(isLoggedIn()) : ?>
                 <li><a href="/">Home</a></li>
-                <li><a href="/finance">Daily Finance</a></li>
+                <li><a href="/finance?date=<?= date("Y-m-d") ?>">Daily Finance</a></li>
                 <li><a href="/monthly">Monthly Finance</a></li>
             </ul>
             <a href="/account">
@@ -16,6 +17,7 @@
                 alt="Avatar Image" 
                 class = "w-12 h-12 bg-accent rounded-full">
             </a>
+            <?php endif ?>
         </div>
     </div>
 </nav>

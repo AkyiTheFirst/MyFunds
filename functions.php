@@ -28,3 +28,12 @@ function getTotal($streams){
     }
     return $total;
 }
+
+function isLoggedIn(){
+    if(isset($_COOKIE['userid'])){
+        return true;
+    }
+    else{
+        return false;
+    }
+}

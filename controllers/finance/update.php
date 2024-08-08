@@ -1,8 +1,9 @@
 <?php
+use core\Database;
 
 //connecting to database
-$dsn = "mysql:host=localhost;port=3306;dbname=myfunds;user=root;charset=utf8mb4";
-$pdo = new PDO($dsn);
+$config = require('config.php');
+$db = new Database($config['database']);
 
 //variables
 $id = $_POST['id'];
@@ -14,10 +15,15 @@ $account = $_POST['account'];
 var_dump($_POST);
 
 //writing db query
-$statement = $pdo->prepare("UPDATE balance SET status = '$status', description = '$description', amount = '$amount', account = '$account' WHERE id = '$id'");
+//$statement = $pdo->prepare("UPDATE balance SET status = '$status', description = '$description', amount = '$amount', account = '$account' WHERE id = '$id'");
 
-//executing query
-$statement->execute();
+$streams = $db->query("UPDATE balance SET status = :status, description = :description, amount = :amount, account = :account WHERE id = :id",[
+    'id' => $id,
+    'status' => $status,
+    'description' => $description,
+    'amount' => $amount,
+    'account' => $account,
+]);
 
 $headerLink = 'location: /finance?date=' . $_POST['date'];
 header($headerLink);
